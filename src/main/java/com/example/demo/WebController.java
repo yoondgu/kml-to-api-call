@@ -43,7 +43,7 @@ public class WebController {
                 .toUri();
         WebClient webClient = WebClient.builder().build();
 
-        List<PinCreateRequest> pins = pinService.parsePins("붕어빵.txt");
+        List<PinCreateRequest> pins = pinService.parsePins(551732L, "붕어빵.txt");
         pins.forEach(pin -> {
             try {
                 sendPost(url, webClient, pin);

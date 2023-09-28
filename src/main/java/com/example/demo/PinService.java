@@ -7,8 +7,8 @@ import java.util.List;
 @Service
 public class PinService {
 
-    public List<PinCreateRequest> parsePins(String fileName) {
-        return PinParser.parseFile("/Users/doyoung/projects/datainsert/src/main/resources/static/" + fileName);
+    public List<PinCreateRequest> parsePins(long topicId, String fileName) {
+        return PinParser.parseTxt(topicId, "/Users/doyoung/projects/datainsert/src/main/resources/static/" + fileName);
     }
 
 }

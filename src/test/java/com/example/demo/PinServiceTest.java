@@ -12,7 +12,7 @@ class PinServiceTest {
     void parseFile() {
         PinService pinService = new PinService();
 
-        List<PinCreateRequest> pinCreateRequests = pinService.parsePins("타코야키.txt");
+        List<PinCreateRequest> pinCreateRequests = pinService.parsePins(551730L, "타코야키.txt");
 
         assertThat(pinCreateRequests).isNotEmpty();
         System.out.println(pinCreateRequests);

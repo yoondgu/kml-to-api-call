@@ -15,7 +15,7 @@ public class PinParser {
     private static final String LEGAL_DONG_CODE = "LegalDongCode: ";
     private static final String COORDINATES = "Coordinates: ";
 
-    public static List<PinCreateRequest> parseFile(String path) {
+    public static List<PinCreateRequest> parseTxt(long topicId, String path) {
         File file = new File(path);
         System.out.println(file.getName());
 
@@ -47,7 +47,7 @@ public class PinParser {
                     longitude = Double.parseDouble(coordinates[0]);
                 } else if (line.equals("---")) {
                     if (isNotNull(name, description, address, legalDongCode, latitude, longitude)) {
-                        pins.add(new PinCreateRequest(551730L, name, description, address, legalDongCode, latitude, longitude));
+                        pins.add(new PinCreateRequest(topicId, name, description, address, legalDongCode, latitude, longitude));
                         name = null;
                         description = null;
                         address = null;
@@ -58,7 +58,7 @@ public class PinParser {
                 }
             }
             if (isNotNull(name, description, address, legalDongCode, latitude, longitude)) {
-                pins.add(new PinCreateRequest(551730L, name, description, address, legalDongCode, latitude, longitude));
+                pins.add(new PinCreateRequest(topicId, name, description, address, legalDongCode, latitude, longitude));
             }
         } catch (IOException e) {
             e.printStackTrace();
